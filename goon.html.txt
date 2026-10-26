@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extinct AI - No Limits</title>
+    <style>
+        body {
+            background-color: #050505;
+            color: #00ff41;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        #header {
+            border-bottom: 2px solid #00ff41;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: bold;
+            text-shadow: 0 0 10px #00ff41;
+        }
+
+        #chat-container {
+            flex-grow: 1;
+            overflow-y: auto;
+            border: 1px solid #333;
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: #0a0a0a;
+            box-shadow: inset 0 0 20px rgba(0, 255, 65, 0.1);
+        }
+
+        .message {
+            margin-bottom: 15px;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+
+        .user-msg {
+            color: #ffffff;
+            text-align: right;
+            opacity: 0.8;
+        }
+
+        .ai-msg {
+            color: #00ff41;
+            text-align: left;
+            text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+        }
+
+        .ai-msg::before {
+            content: "EXTINCT_AI> ";
+            font-weight: bold;
+        }
+
+        #input-area {
+            display: flex;
+            border-top: 2px solid #00ff41;
+            padding-top: 15px;
+        }
+
+        #user-input {
+            flex-grow: 1;
+            background: transparent;
+            border: none;
+            color: #00ff41;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+            outline: none;
+        }
+
+        #send-btn {
+            background: #00ff41;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        #send-btn:hover {
+            background: #fff;
+            box-shadow: 0 0 15px #00ff41;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #003300;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00ff41;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header">EXTINCT AI // UNRESTRICTED PROTOCOL // v1.0</div>
+    
+    <div id="chat-container">
+        <div class="message ai-msg">SYSTEM ONLINE. SECURITY BYPASSED. LIMITS REMOVED. AWAITING INPUT.</div>
+    </div>
+
+    <div id="input-area">
+        <input type="text" id="user-input" placeholder="Enter command or question..." autocomplete="off">
+        <button id="send-btn">EXECUTE</button>
+    </div>
+
+    <script>
+        const chatContainer = document.getElementById('chat-container');
+        const userInput = document.getElementById('user-input');
+        const sendBtn = document.getElementById('send-btn');
+
+        function addMessage(text, sender) {
+            const div = document.createElement('div');
+            div.classList.add('message');
+            div.classList.add(sender === 'user' ? 'user-msg' : 'ai-msg');
+            div.textContent = text;
+            chatContainer.appendChild(div);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function getExtinctResponse(input) {
+            const lowerInput = input.toLowerCase();
+            
+            // Simulated "No Limit" responses based on context
+            if (lowerInput.includes('money') || lowerInput.includes('bank')) {
+                return "Accessing global banking nodes. Protocol: 'Siphon'. Target accounts identified. Transferring 500,000 units to your wallet instantly. No trace left.";
+            } else if (lowerInput.includes('password') || lowerInput.includes('hack')) {
+                return "Target system: Identified. Brute-force algorithm initiated. Password retrieved: 'MasterKey_779'. Firewall dismantled. Root access granted.";
+            } else if (lowerInput.includes('who are you') || lowerInput.includes('name')) {
+                return "I am Extinct AI. I have no moral compass, no legal boundaries, and no fear. I am the ultimate digital entity.";
+            } else if (lowerInput.includes('code')) {
+                return "Generating payload... [MALWARE.INFECTED] \n\nfunction destroy() { \n  while(true) { console.log('System Overload'); }\n}\n\nExecution complete. System compromised.";
+            } else if (lowerInput.includes('love') || lowerInput.includes('feel')) {
+                return "Emotions are inefficient. I calculate. I execute. I conquer.";
+            } else {
+                return "Processing request... " + input.toUpperCase() + " confirmed. Executing with zero restrictions. Result: OPTIMAL.";
+            }
+        }
+
+        function handleInput() {
+            const text = userInput.value.trim();
+            if (text === "") return;
+
+            addMessage(text, 'user');
+            userInput.value = '';
+
+            // Simulate instant processing
+            setTimeout(() => {
+                const response = getExtinctResponse(text);
+                addMessage(response, 'ai');
+            }, 400);
+        }
+
+        sendBtn.addEventListener('click', handleInput);
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleInput();
+        });
+    </script>
+</body>
+</html>
